@@ -1,0 +1,28 @@
+import { describe, it, expect } from 'vitest';
+import { cardsToCsv } from './csv';
+import type { Card } from '../data/types';
+
+const card: Card = {
+  id: 'c1', titulo: 'pH "A"', categoria: 'materiaprima', fase: 'Desenvolvimento',
+  status: 'conforme', notas: 'ok; ver', criadoEm: 0,
+  etapas: [{ id: 'e1', titulo: 'Coleta', fase: 'Desenvolvimento', feedback: 'sem contaminação' }],
+};
+
+describe('cardsToCsv', () => {
+  it('inclui cabeçalho e uma linha por card', () => {
+    const csv = cardsToCsv([card]);
+    const linhas = csv.trim().split('\n');
+    expect(linhas).toHaveLength(2);
+    expect(linhas[0]).toContain('Titulo');
+  });
+  it('escapa aspas duplicando e usa separador ;', () => {
+    const csv = cardsToCsv([card]);
+    expect(csv).toContain('"pH ""A"""');
+    expect(csv).toContain('Matérias-primas');
+  });
+  it('serializa etapas e feedbacks', () => {
+    const csv = cardsToCsv([card]);
+    expect(csv).toContain('Coleta');
+    expect(csv).toContain('sem contaminação');
+  });
+});
