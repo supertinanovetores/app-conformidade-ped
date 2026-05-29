@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Colors · Brand gradients</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 18px 22px; background: #fff; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .cell { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-1); display: flex; flex-direction: column; min-height: 150px; }
+  .fill { flex: 1; }
+  .meta { padding: 10px 14px; background: #fff; }
+  .name { font-family: var(--font-display); font-weight: 600; font-size: 12px; color: var(--fg-1); margin: 0; }
+  .var  { font-family: var(--font-mono); font-size: 10px; color: var(--fg-2); margin: 2px 0 0; }
+  .symbol  { background: radial-gradient(circle at 30% 30%, #4FCFE0 0%, #1B6BB8 45%, #002590 100%); }
+  .hero    { background: linear-gradient(135deg, #002590 0%, #0A3DB0 50%, #00B5A8 100%); }
+  .accent  { background: linear-gradient(135deg, #00E4D0 0%, #2BA8D6 100%); }
+  .soft    { background: linear-gradient(135deg, #E8EAED 0%, #FFFFFF 100%); }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="cell"><div class="fill symbol"></div><div class="meta"><p class="name">Symbol sheen</p><p class="var">--grad-symbol</p></div></div>
+    <div class="cell"><div class="fill hero"></div><div class="meta"><p class="name">Hero sweep</p><p class="var">--grad-hero</p></div></div>
+    <div class="cell"><div class="fill accent"></div><div class="meta"><p class="name">Accent</p><p class="var">--grad-accent</p></div></div>
+    <div class="cell"><div class="fill soft"></div><div class="meta"><p class="name">Soft surface</p><p class="var">--grad-soft</p></div></div>
+  </div>
+</body>
+</html>

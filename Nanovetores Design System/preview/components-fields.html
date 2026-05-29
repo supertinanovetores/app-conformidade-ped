@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Components · Form fields</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 22px 24px; background: #fff; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; align-items: end; font-family: var(--font-body); }
+  label { display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 600; color: #2B3B49; letter-spacing: 0.02em; }
+  input, select { font: inherit; font-size: 14px; padding: 10px 12px; border: 1px solid #D7DCE2; border-radius: 6px; background: #fff; color: #11212E; transition: border-color 200ms; }
+  input:focus, select:focus { outline: 2px solid #00E4D0; outline-offset: 1px; border-color: #002590; }
+  input.error { border-color: #E0524A; }
+  .hint { font-size: 11px; font-weight: 400; color: #708597; }
+  .err  { font-size: 11px; font-weight: 400; color: #E0524A; }
+  .checkbox { flex-direction: row; align-items: center; gap: 8px; font-weight: 400; font-size: 14px; color: #11212E; }
+  .checkbox input { width: 16px; height: 16px; accent-color: #002590; }
+</style>
+</head>
+<body>
+  <label>Company<input type="text" placeholder="Acme Cosmetics" value="Acme Cosmetics"></label>
+  <label>Application<select><option>Fragrance encapsulation</option><option>Active cosmetics</option></select></label>
+  <label>Volume (L/year)<input type="number" placeholder="1000"><span class="hint">Estimate is fine.</span></label>
+  <label>Email<input type="email" class="error" value="invalid"><span class="err">Enter a valid email.</span></label>
+  <label class="checkbox"><input type="checkbox" checked>I agree to the privacy policy</label>
+  <label class="checkbox"><input type="checkbox">Subscribe to R&amp;D updates</label>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Type · Display & headings</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 18px 22px; background: #fff; }
+  .row { display: grid; grid-template-columns: 90px 1fr auto; gap: 14px; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--border-2); }
+  .row:last-child { border-bottom: 0; }
+  .tag  { font-family: var(--font-mono); font-size: 10px; color: var(--nv-gray-blue); text-transform: uppercase; letter-spacing: 0.06em; }
+  .meta { font-family: var(--font-mono); font-size: 10px; color: var(--fg-3); white-space: nowrap; }
+  .d  { font-family: var(--font-display); font-weight: 700; font-size: 48px; line-height: 1.05; letter-spacing: -0.01em; color: var(--fg-1); margin: 0; }
+  .h1 { font-family: var(--font-display); font-weight: 700; font-size: 32px; line-height: 1.2; color: var(--fg-1); margin: 0; }
+  .h2 { font-family: var(--font-display); font-weight: 600; font-size: 24px; line-height: 1.2; color: var(--fg-1); margin: 0; }
+  .h3 { font-family: var(--font-display); font-weight: 600; font-size: 18px; line-height: 1.2; color: var(--fg-1); margin: 0; }
+</style>
+</head>
+<body>
+  <div class="row"><span class="tag">Display</span><p class="d">Encapsulation, engineered.</p><span class="meta">Saira 700 · 48/52</span></div>
+  <div class="row"><span class="tag">H1</span><p class="h1">Controlled-release delivery</p><span class="meta">Saira 700 · 32/38</span></div>
+  <div class="row"><span class="tag">H2</span><p class="h2">From molecule to market</p><span class="meta">Saira 600 · 24/29</span></div>
+  <div class="row"><span class="tag">H3</span><p class="h3">Active ingredient encapsulation</p><span class="meta">Saira 600 · 18/22</span></div>
+</body>
+</html>

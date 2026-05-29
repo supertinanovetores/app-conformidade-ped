@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shadows</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 26px 24px; background: var(--bg-2); display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; align-items: center; }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .box  { width: 96px; height: 80px; background: #fff; border-radius: 10px; }
+  .s1 { box-shadow: 0 1px 2px rgba(17, 33, 46, 0.06), 0 1px 1px rgba(17, 33, 46, 0.04); }
+  .s2 { box-shadow: 0 4px 12px rgba(17, 33, 46, 0.08), 0 1px 2px rgba(17, 33, 46, 0.04); }
+  .s3 { box-shadow: 0 12px 32px rgba(17, 33, 46, 0.10), 0 2px 6px rgba(17, 33, 46, 0.05); }
+  .sb { box-shadow: 0 8px 24px rgba(0, 37, 144, 0.18); }
+  .lab { font-family: var(--font-mono); font-size: 11px; color: var(--fg-1); }
+  .v   { font-family: var(--font-body); font-size: 10px; color: var(--fg-2); text-align: center; }
+</style>
+</head>
+<body>
+  <div class="item"><div class="box s1"></div><span class="lab">--shadow-1</span><span class="v">Inline cards</span></div>
+  <div class="item"><div class="box s2"></div><span class="lab">--shadow-2</span><span class="v">Dropdowns / sticky</span></div>
+  <div class="item"><div class="box s3"></div><span class="lab">--shadow-3</span><span class="v">Modals / floating</span></div>
+  <div class="item"><div class="box sb"></div><span class="lab">--shadow-blue</span><span class="v">Branded CTA</span></div>
+</body>
+</html>

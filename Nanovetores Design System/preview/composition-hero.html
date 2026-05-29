@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hero — sample composition</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; }
+  .hero { width: 100%; min-height: 360px; background: linear-gradient(135deg, #002590 0%, #0A3DB0 50%, #00B5A8 100%); color: #fff; padding: 80px 40px 36px; display: flex; flex-direction: column; justify-content: center; gap: 14px; position: relative; overflow: hidden; }
+  .hero::after { content: ""; position: absolute; right: -80px; top: -60px; width: 380px; height: 380px; background: radial-gradient(circle at 30% 30%, rgba(0,228,208,0.6) 0%, rgba(0,37,144,0) 60%); }
+  .hero .ey { font-family: var(--font-display); font-weight: 600; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #00E4D0; margin: 0; }
+  .hero h1 { font-family: var(--font-display); font-weight: 700; font-size: 44px; line-height: 1.05; letter-spacing: -0.01em; margin: 0; max-width: 70%; color: #fff; }
+  .hero p  { color: rgba(255,255,255,0.85); }
+  .hero p.lede { font-family: var(--font-body); font-size: 16px; line-height: 1.5; color: rgba(255,255,255,0.85); max-width: 60%; margin: 0; }
+  .cta { display: inline-flex; gap: 10px; margin-top: 8px; position: relative; z-index: 1; }
+  .btn { font-family: var(--font-body); font-weight: 600; font-size: 14px; padding: 12px 22px; border-radius: 8px; border: 0; cursor: pointer; }
+  .a { background: #00E4D0; color: #002590; }
+  .b { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.4); }
+  img.logo { position: absolute; top: 22px; left: 40px; height: 28px; filter: brightness(0) invert(1); }
+</style>
+</head>
+<body>
+  <div class="hero">
+    <img class="logo" src="../assets/logos/tipografia-sem-tagline.png" alt="">
+    <p class="ey">Encapsulation platform</p>
+    <h1>Active ingredients, delivered exactly where they're needed.</h1>
+    <p class="lede">Lipid and polymeric carriers engineered for cosmetics, fragrance, home care and textiles. Industrial scale, R&amp;D collaboration.</p>
+    <div class="cta">
+      <button class="btn a">Talk to R&amp;D</button>
+      <button class="btn b">View technologies</button>
+    </div>
+  </div>
+</body>
+</html>

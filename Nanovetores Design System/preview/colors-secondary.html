@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Colors · Secondary</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 18px; background: #fff; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .swatch { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-1); display: flex; flex-direction: column; min-height: 200px; }
+  .fill  { flex: 1 1 auto; }
+  .meta  { padding: 12px 14px; background: #fff; }
+  .name  { font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--fg-1); margin: 0; }
+  .role  { font-family: var(--font-display); font-weight: 600; font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--nv-gray-blue); margin: 0 0 6px; }
+  .vals  { display: grid; grid-template-columns: auto 1fr; gap: 1px 12px; margin-top: 8px; font-family: var(--font-mono); font-size: 11px; color: var(--fg-2); }
+  .vals b { color: var(--fg-1); font-weight: 500; }
+  .grayblue { background: #708597; }
+  .graylight { background: #E8EAED; }
+</style>
+</head>
+<body>
+  <div class="swatch">
+    <div class="fill grayblue"></div>
+    <div class="meta">
+      <p class="role">Secondary · Text</p>
+      <p class="name">Gray-Blue</p>
+      <div class="vals">
+        <span>HEX</span><b>#708597</b>
+        <span>RGB</span><b>112 · 133 · 151</b>
+        <span>CMYK</span><b>60 · 41 · 31 · 2</b>
+        <span>Pantone</span><b>7544 C</b>
+      </div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="fill graylight"></div>
+    <div class="meta">
+      <p class="role">Secondary · Surface</p>
+      <p class="name">Gray Light</p>
+      <div class="vals">
+        <span>HEX</span><b>#E8EAED</b>
+        <span>RGB</span><b>232 · 234 · 237</b>
+        <span>CMYK</span><b>8 · 5 · 4 · 0</b>
+        <span>Pantone</span><b>656 C</b>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

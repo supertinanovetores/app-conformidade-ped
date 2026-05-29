@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Colors · Primary</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 18px; background: #fff; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .swatch { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-1); display: flex; flex-direction: column; min-height: 200px; }
+  .fill  { flex: 1 1 auto; }
+  .meta  { padding: 12px 14px; background: #fff; }
+  .name  { font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--fg-1); margin: 0; }
+  .role  { font-family: var(--font-display); font-weight: 600; font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--nv-gray-blue); margin: 0 0 6px; }
+  .vals  { display: grid; grid-template-columns: auto 1fr; gap: 1px 12px; margin-top: 8px; font-family: var(--font-mono); font-size: 11px; color: var(--fg-2); }
+  .vals b { color: var(--fg-1); font-weight: 500; }
+  .blue { background: #002590; }
+  .turq { background: #00E4D0; }
+</style>
+</head>
+<body>
+  <div class="swatch">
+    <div class="fill blue"></div>
+    <div class="meta">
+      <p class="role">Primary · Anchor</p>
+      <p class="name">Dark Blue</p>
+      <div class="vals">
+        <span>HEX</span><b>#002590</b>
+        <span>RGB</span><b>0 · 37 · 144</b>
+        <span>CMYK</span><b>100 · 94 · 11 · 5</b>
+        <span>Pantone</span><b>Dark Blue C</b>
+      </div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="fill turq"></div>
+    <div class="meta">
+      <p class="role">Primary · Accent</p>
+      <p class="name">Turquoise</p>
+      <div class="vals">
+        <span>HEX</span><b>#00E4D0</b>
+        <span>RGB</span><b>0 · 228 · 208</b>
+        <span>CMYK</span><b>60 · 0 · 30 · 0</b>
+        <span>Pantone</span><b>3252 C</b>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

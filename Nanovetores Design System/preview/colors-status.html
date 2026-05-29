@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Colors · Status</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 18px 22px; background: #fff; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .cell { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-1); display: flex; flex-direction: column; }
+  .fill { height: 70px; display: flex; align-items: flex-end; padding: 10px 14px; }
+  .fill span { font-family: var(--font-display); font-weight: 600; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,.95); }
+  .meta { padding: 10px 14px; }
+  .name { font-family: var(--font-display); font-weight: 600; font-size: 13px; color: var(--fg-1); margin: 0; }
+  .hex  { font-family: var(--font-mono); font-size: 11px; color: var(--fg-2); margin: 2px 0 0; }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="cell"><div class="fill" style="background:#00B894"><span>Success</span></div><div class="meta"><p class="name">Success</p><p class="hex">#00B894</p></div></div>
+    <div class="cell"><div class="fill" style="background:#F2A93B"><span>Warning</span></div><div class="meta"><p class="name">Warning</p><p class="hex">#F2A93B</p></div></div>
+    <div class="cell"><div class="fill" style="background:#E0524A"><span>Danger</span></div><div class="meta"><p class="name">Danger</p><p class="hex">#E0524A</p></div></div>
+    <div class="cell"><div class="fill" style="background:#002590"><span>Info</span></div><div class="meta"><p class="name">Info</p><p class="hex">#002590</p></div></div>
+  </div>
+</body>
+</html>

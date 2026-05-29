@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Logo · Protection area & min size</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 20px 26px; background: #fff; display: grid; grid-template-columns: 1.4fr 1fr; gap: 22px; align-items: center; }
+  .protection { position: relative; padding: 28px; border: 1px dashed var(--nv-turquoise); border-radius: var(--radius-md); background: #F7FBFC; display: flex; align-items: center; justify-content: center; min-height: 130px; }
+  .protection img { display: block; height: 60px; }
+  .annot { position: absolute; font-family: var(--font-mono); font-size: 11px; color: var(--nv-blue); background: #fff; padding: 1px 6px; border-radius: 3px; border: 1px solid var(--nv-turquoise); }
+  .ann-l { left: -6px; top: 50%; transform: translateY(-50%); }
+  .ann-r { right: -6px; top: 50%; transform: translateY(-50%); }
+  .ann-t { top: -10px; left: 50%; transform: translateX(-50%); }
+  .ann-b { bottom: -10px; left: 50%; transform: translateX(-50%); }
+
+  .min { display: flex; flex-direction: column; gap: 14px; }
+  .min .row { display: flex; align-items: center; gap: 14px; }
+  .min .row img { height: auto; }
+  .badge { font-family: var(--font-mono); font-size: 11px; color: var(--nv-blue); background: var(--nv-gray-light); padding: 3px 8px; border-radius: 999px; }
+  .label { font-family: var(--font-display); font-weight: 600; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--nv-gray-blue); }
+</style>
+</head>
+<body>
+  <div class="protection">
+    <img src="../assets/logos/logo-completo.png" alt="">
+    <span class="annot ann-l">1x</span>
+    <span class="annot ann-r">1x</span>
+    <span class="annot ann-t">½x</span>
+    <span class="annot ann-b">½x</span>
+  </div>
+  <div class="min">
+    <span class="label">Minimum size</span>
+    <div class="row">
+      <img src="../assets/logos/logo-sem-tagline.png" alt="" style="width: 150px;">
+      <span class="badge">150 px digital</span>
+    </div>
+    <div class="row">
+      <img src="../assets/logos/logo-completo.png" alt="" style="width: 200px;">
+      <span class="badge">3 cm print</span>
+    </div>
+  </div>
+</body>
+</html>

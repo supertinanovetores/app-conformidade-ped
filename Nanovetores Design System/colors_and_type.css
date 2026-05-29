@@ -1,0 +1,277 @@
+/* =========================================================================
+   Nanovetores — Colors & Type
+   ---------------------------------------------------------------------------
+   Brand foundation tokens. Import this file at the top of any artifact:
+       <link rel="stylesheet" href="colors_and_type.css">
+   ========================================================================= */
+
+/* ---- Webfonts ----------------------------------------------------------- */
+/* Saira — closest Google Fonts match to the NANOVETORES wordmark
+   (geometric semi-condensed sans, even stroke, open apertures).
+   Inter — body / UI workhorse.                                            */
+@import url("https://fonts.googleapis.com/css2?family=Saira:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap");
+
+:root {
+  /* ===== Brand colors ===================================================== */
+  /* Primary */
+  --nv-blue:        #002590;   /* Pantone Dark Blue C — primary anchor      */
+  --nv-turquoise:   #00E4D0;   /* Pantone 3252 C       — primary accent     */
+
+  /* Secondary */
+  --nv-gray-blue:   #708597;   /* Pantone 7544 C       — wordmark / text   */
+  --nv-gray-light:  #E8EAED;   /* Pantone 656 C        — surfaces / lines  */
+
+  /* Working neutrals derived from the brand grays */
+  --nv-ink:         #11212E;   /* Near-black with a blue cast              */
+  --nv-ink-2:       #2B3B49;
+  --nv-white:       #FFFFFF;
+  --nv-bg:          #F7F8FA;
+  --nv-line:        #D7DCE2;
+
+  /* Functional / status (derived to harmonize with brand palette) */
+  --nv-success:     #00B894;
+  --nv-warning:     #F2A93B;
+  --nv-danger:      #E0524A;
+  --nv-info:        var(--nv-blue);
+
+  /* Foreground tokens (semantic) */
+  --fg-1:           var(--nv-ink);        /* Primary text                  */
+  --fg-2:           var(--nv-gray-blue);  /* Secondary text                */
+  --fg-3:           #98A4B0;              /* Tertiary / meta               */
+  --fg-on-blue:     var(--nv-white);
+  --fg-on-turq:     var(--nv-blue);
+  --fg-link:        var(--nv-blue);
+
+  /* Background tokens (semantic) */
+  --bg-1:           var(--nv-white);
+  --bg-2:           var(--nv-bg);
+  --bg-3:           var(--nv-gray-light);
+  --bg-invert:      var(--nv-blue);
+  --bg-accent:      var(--nv-turquoise);
+
+  /* Borders */
+  --border-1:       var(--nv-line);
+  --border-2:       var(--nv-gray-light);
+  --border-strong:  var(--nv-gray-blue);
+
+  /* ===== Brand gradients (echo the symbol's chrome→teal→navy sweep) ===== */
+  --grad-symbol:    radial-gradient(circle at 30% 30%, #4FCFE0 0%, #1B6BB8 45%, #002590 100%);
+  --grad-hero:      linear-gradient(135deg, #002590 0%, #0A3DB0 50%, #00B5A8 100%);
+  --grad-soft:      linear-gradient(135deg, #E8EAED 0%, #FFFFFF 100%);
+  --grad-accent:    linear-gradient(135deg, #00E4D0 0%, #2BA8D6 100%);
+
+  /* ===== Type families ================================================== */
+  --font-display:   "Saira", "Helvetica Neue", Arial, sans-serif;
+  --font-body:      "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-mono:      "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* ===== Type scale (modular, 1.25 ratio anchored at 16px) ============== */
+  --fs-12: 0.75rem;
+  --fs-14: 0.875rem;
+  --fs-16: 1rem;
+  --fs-18: 1.125rem;
+  --fs-20: 1.25rem;
+  --fs-24: 1.5rem;
+  --fs-32: 2rem;
+  --fs-40: 2.5rem;
+  --fs-56: 3.5rem;
+  --fs-72: 4.5rem;
+
+  /* Line-heights */
+  --lh-tight: 1.05;
+  --lh-snug:  1.2;
+  --lh-base:  1.5;
+  --lh-loose: 1.7;
+
+  /* Tracking — the NANOVETORES wordmark is mildly tracked */
+  --track-tight:  -0.01em;
+  --track-base:    0;
+  --track-wide:    0.04em;
+  --track-caps:    0.08em;
+
+  /* ===== Spacing (4-pt) ================================================= */
+  --sp-0:  0;
+  --sp-1:  0.25rem;   /* 4  */
+  --sp-2:  0.5rem;    /* 8  */
+  --sp-3:  0.75rem;   /* 12 */
+  --sp-4:  1rem;      /* 16 */
+  --sp-5:  1.5rem;    /* 24 */
+  --sp-6:  2rem;      /* 32 */
+  --sp-7:  3rem;      /* 48 */
+  --sp-8:  4rem;      /* 64 */
+  --sp-9:  6rem;      /* 96 */
+
+  /* ===== Radius ========================================================= */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  /* ===== Shadows (soft, restrained — no glow) =========================== */
+  --shadow-1: 0 1px 2px rgba(17, 33, 46, 0.06), 0 1px 1px rgba(17, 33, 46, 0.04);
+  --shadow-2: 0 4px 12px rgba(17, 33, 46, 0.08), 0 1px 2px rgba(17, 33, 46, 0.04);
+  --shadow-3: 0 12px 32px rgba(17, 33, 46, 0.10), 0 2px 6px rgba(17, 33, 46, 0.05);
+  --shadow-blue: 0 8px 24px rgba(0, 37, 144, 0.18);
+
+  /* ===== Motion ========================================================= */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 360ms;
+
+  /* ===== Layout ========================================================= */
+  --container-sm:   640px;
+  --container-md:   960px;
+  --container-lg:  1200px;
+  --container-xl:  1440px;
+  --gutter:        var(--sp-5);
+
+  /* ===== Protection area (logo) ========================================= */
+  /* x = symbol width. Reserve >= 1x left/right, 0.5x top/bottom around logo */
+  --logo-x: 1em;
+}
+
+/* =========================================================================
+   Base
+   ========================================================================= */
+html, body {
+  background: var(--bg-1);
+  color: var(--fg-1);
+  font-family: var(--font-body);
+  font-size: var(--fs-16);
+  line-height: var(--lh-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+
+/* =========================================================================
+   Semantic typography
+   ---------------------------------------------------------------------------
+   Display is for hero / numerical moments. Headings step down through Saira
+   at decreasing weights. Body sits in Inter.
+   ========================================================================= */
+
+.nv-display, .display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(var(--fs-56), 7vw, var(--fs-72));
+  line-height: var(--lh-tight);
+  letter-spacing: var(--track-tight);
+  color: var(--fg-1);
+}
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-40);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--track-tight);
+  color: var(--fg-1);
+}
+
+h2, .h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-32);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+}
+
+h3, .h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-24);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+}
+
+h4, .h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-20);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+}
+
+p, .body {
+  font-family: var(--font-body);
+  font-size: var(--fs-16);
+  line-height: var(--lh-base);
+  color: var(--fg-1);
+  text-wrap: pretty;
+}
+
+.body-lg {
+  font-size: var(--fs-18);
+  line-height: var(--lh-base);
+}
+
+.body-sm, small {
+  font-family: var(--font-body);
+  font-size: var(--fs-14);
+  line-height: var(--lh-base);
+  color: var(--fg-2);
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-12);
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+  color: var(--nv-gray-blue);
+}
+
+/* The wordmark style — for moments where we render NANOVETORES in HTML */
+.nv-wordmark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--nv-gray-blue);
+  text-transform: uppercase;
+}
+
+.tagline {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-style: normal;
+  color: var(--nv-gray-blue);
+}
+
+/* Inline */
+a {
+  color: var(--fg-link);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur-base) var(--ease-out),
+              color       var(--dur-base) var(--ease-out);
+}
+a:hover { border-bottom-color: currentColor; }
+
+code, kbd, pre, samp {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+code {
+  background: var(--bg-3);
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-xs);
+  color: var(--nv-blue);
+}
+
+/* Scroll reset for embed cards */
+.nv-card-shell {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background: var(--bg-1);
+  font-family: var(--font-body);
+  color: var(--fg-1);
+}

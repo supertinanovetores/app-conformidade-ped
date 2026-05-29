@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Colors · Semantic neutrals</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 20px 24px; background: #fff; }
+  .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .cell { border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border-1); display: flex; flex-direction: column; }
+  .fill { height: 64px; }
+  .lbl  { padding: 8px 10px; }
+  .lbl .n { font-family: var(--font-display); font-weight: 600; font-size: 11px; color: var(--fg-1); margin: 0; }
+  .lbl .v { font-family: var(--font-mono); font-size: 10px; color: var(--fg-2); margin: 2px 0 0; }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="cell"><div class="fill" style="background:#11212E"></div><div class="lbl"><p class="n">Ink</p><p class="v">#11212E</p></div></div>
+    <div class="cell"><div class="fill" style="background:#2B3B49"></div><div class="lbl"><p class="n">Ink-2</p><p class="v">#2B3B49</p></div></div>
+    <div class="cell"><div class="fill" style="background:#708597"></div><div class="lbl"><p class="n">Gray-Blue</p><p class="v">#708597</p></div></div>
+    <div class="cell"><div class="fill" style="background:#98A4B0"></div><div class="lbl"><p class="n">Tertiary</p><p class="v">#98A4B0</p></div></div>
+    <div class="cell"><div class="fill" style="background:#D7DCE2"></div><div class="lbl"><p class="n">Line</p><p class="v">#D7DCE2</p></div></div>
+    <div class="cell"><div class="fill" style="background:#E8EAED"></div><div class="lbl"><p class="n">Gray Light</p><p class="v">#E8EAED</p></div></div>
+    <div class="cell"><div class="fill" style="background:#F7F8FA"></div><div class="lbl"><p class="n">BG soft</p><p class="v">#F7F8FA</p></div></div>
+    <div class="cell"><div class="fill" style="background:#FFFFFF;border-bottom:1px solid var(--border-1)"></div><div class="lbl"><p class="n">White</p><p class="v">#FFFFFF</p></div></div>
+    <div class="cell"><div class="fill" style="background:#002590"></div><div class="lbl"><p class="n">Blue</p><p class="v">#002590</p></div></div>
+    <div class="cell"><div class="fill" style="background:#00E4D0"></div><div class="lbl"><p class="n">Turquoise</p><p class="v">#00E4D0</p></div></div>
+  </div>
+</body>
+</html>
