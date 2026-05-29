@@ -762,7 +762,7 @@ describe('derive', () => {
 
   it('contarPor agrupa por chave', () => {
     expect(contarPor(cards, 'categoria').zeta).toBe(1);
-    expect(contarPor(cards, 'categoria').materiaprima).toBe(2);
+    expect(contarPor(cards, 'categoria').materiaprima).toBe(4);
   });
 });
 ```
