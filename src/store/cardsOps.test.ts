@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { createCard, updateCard, removeCard, updateEtapas } from './cardsOps';
+import { createCard, updateCard, removeCard, updateEtapas, duplicateCard } from './cardsOps';
 import type { Card, Usuario } from '../data/types';
 
 const autor: Usuario = { nome: 'Ana Souza', email: 'ana@nanovetores.com.br' };
@@ -49,5 +49,29 @@ describe('cardsOps', () => {
     expect(out[0].etapas).toEqual(etapas);
     expect(out[0].atualizadoPor).toEqual(outro);
     expect(out[0].atualizadoEm).toBeGreaterThan(1);
+  });
+
+  it('duplicateCard copia como modelo, zerando resultados e recarimbando autor', () => {
+    const orig: Card = {
+      ...base, titulo: 'Ensaio Zeta', status: 'conforme', notas: 'tudo ok',
+      etapas: [{ id: 'e1', titulo: 'Leitura', fase: 'Validação', feedback: 'estável' }],
+    };
+    const out = duplicateCard([orig], 'c1', outro);
+    expect(out).toHaveLength(2);
+    const copia = out[1];
+    expect(copia.titulo).toBe('Ensaio Zeta (cópia)');
+    expect(copia.id).not.toBe(orig.id);
+    expect(copia.status).toBe('');
+    expect(copia.notas).toBe('');
+    expect(copia.criadoPor).toEqual(outro);
+    // estrutura de etapas preservada, mas feedback e id novos
+    expect(copia.etapas[0].titulo).toBe('Leitura');
+    expect(copia.etapas[0].fase).toBe('Validação');
+    expect(copia.etapas[0].feedback).toBe('');
+    expect(copia.etapas[0].id).not.toBe('e1');
+  });
+
+  it('duplicateCard com id inexistente devolve a lista intacta', () => {
+    expect(duplicateCard([base], 'x', outro)).toHaveLength(1);
   });
 });

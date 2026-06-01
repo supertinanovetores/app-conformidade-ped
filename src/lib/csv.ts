@@ -6,7 +6,7 @@ const q = (v: unknown) => '"' + String(v ?? '').replace(/"/g, '""') + '"';
 const autorTexto = (u: Usuario | undefined, vazio: string) =>
   u ? `${u.nome} <${u.email}>` : vazio;
 
-const CABECALHO = ['Titulo', 'Categoria', 'Fase', 'Status', 'Notas', 'Etapas', 'Fases das etapas', 'Feedbacks', 'Criado em', 'Criado por', 'Editado por'];
+const CABECALHO = ['Titulo', 'Categoria', 'Fase', 'Status', 'Solicitante', 'Responsavel', 'Notas', 'Etapas', 'Fases das etapas', 'Feedbacks', 'Criado em', 'Criado por', 'Editado por'];
 
 export function cardsToCsv(cards: Card[]): string {
   const cab = CABECALHO.map(q).join(';');
@@ -17,7 +17,7 @@ export function cardsToCsv(cards: Card[]): string {
     const data = c.criadoEm ? new Date(c.criadoEm).toLocaleDateString('pt-BR') : '—';
     const criadoPor = autorTexto(c.criadoPor, 'Sistema');
     const editadoPor = autorTexto(c.atualizadoPor, '—');
-    return [c.titulo, CATEGORIAS[c.categoria], c.fase, c.status || '—', c.notas, etapas, fases, feedbacks, data, criadoPor, editadoPor]
+    return [c.titulo, CATEGORIAS[c.categoria], c.fase, c.status || '—', c.solicitante || '—', c.responsavel || '—', c.notas, etapas, fases, feedbacks, data, criadoPor, editadoPor]
       .map(q)
       .join(';');
   });

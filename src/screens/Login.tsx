@@ -1,4 +1,4 @@
-import { useAuth } from '../auth/useAuth';
+import { useAuth } from '../auth/CurrentUserContext';
 import { msalConfigurado } from '../auth/msalConfig';
 
 export function Login() {

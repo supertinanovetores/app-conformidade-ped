@@ -14,6 +14,7 @@ export interface Etapa {
 export interface Usuario {
   nome: string;
   email: string;
+  foto?: string; // data URL da foto de perfil (Microsoft Graph), quando disponível
 }
 
 export interface Card {
@@ -23,6 +24,8 @@ export interface Card {
   fase: Fase;
   status: Status;
   notas: string;
+  solicitante?: string;
+  responsavel?: string;
   criadoEm: number;
   etapas: Etapa[];
   criadoPor?: Usuario;
@@ -34,4 +37,18 @@ export interface Filtros {
   categoria: Categoria | '';
   status: Status;
   fase: Fase | '';
+}
+
+export type Ordem = 'recentes' | 'antigos' | 'titulo' | 'status';
+
+export type LogAcao = 'criou' | 'editou' | 'duplicou' | 'excluiu';
+
+export interface LogEntry {
+  id: string;
+  ts: number;
+  autor: Usuario;
+  acao: LogAcao;
+  cardId: string;
+  cardTitulo: string;
+  detalhe?: string;
 }

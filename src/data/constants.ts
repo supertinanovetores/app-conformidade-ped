@@ -1,4 +1,4 @@
-import type { Categoria, Status, Fase } from './types';
+import type { Categoria, Status, Fase, Ordem } from './types';
 
 export const CATEGORIAS: Record<Categoria, string> = {
   materiaprima: 'Matérias-primas',
@@ -27,3 +27,10 @@ export const FASE_CLASSE: Record<Fase, string> = {
   Validação: 'fase-val',
   Liberação: 'fase-lib',
 };
+
+export const ORDEM_OPTS: [Ordem, string][] = [
+  ['recentes', 'Mais recentes'],
+  ['antigos', 'Mais antigos'],
+  ['titulo', 'Título (A–Z)'],
+  ['status', 'Status'],
+];

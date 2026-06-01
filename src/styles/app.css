@@ -111,6 +111,8 @@ h1,h2,h3,h4 { font-family: var(--font-display); }
 /* ===== Modal ===== */
 .overlay { position: fixed; inset: 0; background: rgba(17,33,46,.45); z-index: 100; display: flex; justify-content: center; align-items: center; padding: 16px; }
 .modal { background: #fff; border-radius: 12px; width: 100%; max-width: 520px; max-height: 90vh; overflow-y: auto; padding: 26px 24px; box-shadow: var(--shadow-3); }
+.modal-medio { max-width: 600px; }
+.modal-largo { max-width: 720px; }
 .modal-titulo { font-size: 17px; font-weight: 700; margin-bottom: 20px; color: var(--app-accent); }
 .campo { margin-bottom: 14px; }
 .campo label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--app-text2); margin-bottom: 5px; }
@@ -127,6 +129,14 @@ h1,h2,h3,h4 { font-family: var(--font-display); }
 .add-etapa-row input { flex: 1; padding: 8px 12px; border: 1.5px solid var(--app-border); border-radius: 6px; font-size: 13px; font-family: inherit; }
 .modal-acoes { display: flex; gap: 10px; margin-top: 6px; }
 .modal-acoes .app-btn { flex: 1; justify-content: center; }
+
+/* ===== Diálogo de duplicar ===== */
+.dup-intro { font-size: 14px; color: var(--app-text); margin-bottom: 12px; }
+.dup-lista { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+.dup-lista li { display: flex; justify-content: space-between; gap: 12px; align-items: center; font-size: 13px; background: var(--app-bg); border-radius: 6px; padding: 8px 12px; }
+.dup-lista li span { color: var(--app-text2); }
+.dup-lista li strong { text-align: right; }
+.dup-reset { font-size: 13px; color: #8a5a00; background: var(--app-yellow-light); border-radius: 6px; padding: 10px 12px; margin-bottom: 18px; line-height: 1.5; }
 
 /* ===== Toast ===== */
 .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--app-green); color: #fff; padding: 12px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; z-index: 300; box-shadow: var(--shadow-2); }
@@ -202,8 +212,83 @@ h1,h2,h3,h4 { font-family: var(--font-display); }
 .app-user-sair { background: none; border: none; padding: 0; font-size: 12px; font-weight: 600; color: var(--app-accent); cursor: pointer; font-family: inherit; }
 .app-user-sair:hover { text-decoration: underline; }
 
+/* ===== Ações no topo do card ===== */
+.card-acoes { display: flex; gap: 2px; flex-shrink: 0; }
+.btn-icone { background: none; border: none; color: #b6c0cc; cursor: pointer; font-size: 14px; padding: 2px 5px; border-radius: 4px; line-height: 1; }
+.btn-icone:hover { color: var(--app-accent); background: var(--app-accent-light); }
+.btn-icone.btn-excluir:hover { color: var(--app-red); background: var(--app-red-light); }
+
+/* ===== Busca + dica do modal ===== */
+.filtro-busca { padding: 9px 12px; border: 1.5px solid var(--app-border); border-radius: 7px; font-size: 13px; background: #fff; font-family: inherit; min-width: 220px; flex: 1; color: var(--app-text); }
+.filtro-busca:focus { outline: none; border-color: var(--app-accent); }
+.modal-dica { font-size: 12px; color: var(--app-text2); background: var(--app-bg); border-radius: 6px; padding: 10px 12px; margin-bottom: 18px; }
+
+/* ===== Gráficos do Painel ===== */
+.painel-graficos { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 16px; }
+.donut { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.donut-svg { flex-shrink: 0; }
+.donut-total { font-size: 26px; font-weight: 700; font-family: var(--font-display); fill: var(--app-text); }
+.donut-legenda { display: flex; flex-direction: column; gap: 8px; flex: 1; min-width: 130px; }
+.donut-leg-item { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+.donut-leg-dot { width: 11px; height: 11px; border-radius: 3px; flex-shrink: 0; }
+.donut-leg-label { color: var(--app-text2); flex: 1; }
+.donut-leg-val { font-weight: 700; color: var(--app-text); }
+.barras { display: flex; flex-direction: column; gap: 10px; }
+.barra-row { display: grid; grid-template-columns: 118px 1fr 26px; align-items: center; gap: 10px; font-size: 12px; }
+.barra-label { color: var(--app-text2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.barra-track { background: var(--app-bg); border-radius: 6px; height: 14px; overflow: hidden; }
+.barra-fill { height: 100%; border-radius: 6px; min-width: 2px; transition: width .3s; }
+.barra-val { font-weight: 700; color: var(--app-text); text-align: right; }
+
+/* ===== Solicitante / Responsável ===== */
+.card-pessoas { display: flex; flex-direction: column; gap: 3px; font-size: 12px; color: var(--app-text2); }
+.card-pessoas b { color: var(--app-text); font-weight: 600; }
+
+/* ===== Card: título clicável + info de fluxo ===== */
+.card-titulo-btn { background: none; border: none; padding: 0; display: flex; align-items: center; gap: 6px; cursor: pointer; flex: 1; text-align: left; font-family: inherit; min-width: 0; }
+.card-titulo-btn:hover .card-titulo { color: var(--app-accent); }
+.card-chevron { color: var(--app-accent); font-size: 11px; flex-shrink: 0; }
+.card-fluxo-info { align-self: stretch; display: flex; align-items: center; justify-content: center; gap: 7px; background: var(--app-accent-light); border: 1.5px solid var(--app-accent); color: var(--app-accent); border-radius: 7px; padding: 9px 12px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; }
+.card-fluxo-info:hover { background: #d8e0f4; }
+.card-fluxo-info svg { flex-shrink: 0; }
+
+/* ===== Fluxo editável (modal de detalhes) ===== */
+.card-fluxo { border-top: 1px solid var(--app-border); padding-top: 12px; display: flex; flex-direction: column; gap: 10px; }
+.card-fluxo-titulo { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--app-text2); }
+.card-fluxo-vazio { font-size: 12px; color: var(--fg-3); font-style: italic; }
+.cfx-etapa { background: var(--app-bg); border: 1px solid var(--app-border); border-left: 3px solid var(--app-border); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 6px; }
+.cfx-etapa.fase-dev { border-left-color: var(--app-accent); }
+.cfx-etapa.fase-val { border-left-color: var(--app-yellow); }
+.cfx-etapa.fase-lib { border-left-color: var(--app-accent-2); }
+.cfx-cab { display: flex; justify-content: space-between; align-items: center; }
+.cfx-num { font-size: 11px; font-weight: 700; color: var(--app-accent); text-transform: uppercase; letter-spacing: .4px; }
+.cfx-input, .cfx-select, .cfx-textarea { width: 100%; padding: 7px 9px; border: 1.5px solid var(--app-border); border-radius: 6px; font-size: 13px; font-family: inherit; background: #fff; color: var(--app-text); }
+.cfx-input:focus, .cfx-select:focus, .cfx-textarea:focus { outline: none; border-color: var(--app-accent); }
+.cfx-textarea { resize: vertical; min-height: 50px; }
+.btn-add-etapa-inline { background: var(--app-accent-light); border: 1.5px dashed var(--app-accent); border-radius: 7px; padding: 9px; color: var(--app-accent); font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; }
+.btn-add-etapa-inline:hover { background: #d8e0f4; }
+
+/* ===== Log de atividades ===== */
+.log-lista { display: flex; flex-direction: column; gap: 8px; }
+.log-item { display: flex; align-items: center; gap: 12px; background: var(--app-surface); border: 1px solid var(--app-border); border-radius: 10px; padding: 12px 14px; }
+.log-corpo { flex: 1; min-width: 0; }
+.log-linha1 { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 14px; }
+.log-card { color: var(--app-text); font-weight: 600; }
+.log-acao { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .4px; padding: 2px 8px; border-radius: 20px; }
+.log-acao.log-criou { background: var(--app-green-light); color: var(--app-green); }
+.log-acao.log-editou { background: var(--app-accent-light); color: var(--app-accent); }
+.log-acao.log-duplicou { background: #e6f7f4; color: var(--app-accent-2); }
+.log-acao.log-excluiu { background: var(--app-red-light); color: var(--app-red); }
+.log-detalhe { font-size: 12px; color: var(--app-text2); margin-top: 3px; }
+.log-data { font-size: 12px; color: var(--fg-3); white-space: nowrap; flex-shrink: 0; }
+
+/* ===== Avatar (foto ou iniciais) ===== */
+.avatar { border-radius: 50%; flex-shrink: 0; object-fit: cover; display: inline-flex; align-items: center; justify-content: center; vertical-align: middle; }
+.avatar-iniciais { background: var(--app-accent); color: #fff; font-weight: 700; line-height: 1; }
+
 /* ===== Autoria nos cards ===== */
-.card-autoria { font-size: 11px; color: var(--fg-3); border-top: 1px solid var(--app-border); padding-top: 8px; line-height: 1.4; }
+.card-autoria { font-size: 11px; color: var(--fg-3); border-top: 1px solid var(--app-border); padding-top: 8px; line-height: 1.5; display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; }
+.autoria-pessoa { display: inline-flex; align-items: center; gap: 5px; }
 .fluxo-topbar-autoria { font-size: 11px; font-weight: 400; color: rgba(255,255,255,.6); margin-top: 2px; }
 
 /* ===== Impressão ===== */
@@ -213,6 +298,10 @@ h1,h2,h3,h4 { font-family: var(--font-display); }
   .app-content { overflow: visible; padding: 0; }
   .grid-cards { grid-template-columns: repeat(2, 1fr); }
   .card { break-inside: avoid; box-shadow: none; }
+  /* Painel: preserva cores dos gráficos e evita cortar blocos */
+  .painel-graficos { grid-template-columns: repeat(2, 1fr); }
+  .resumo-bloco { break-inside: avoid; }
+  .donut-svg, .donut-leg-dot, .barra-fill { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   /* Fluxo: imprime fundo branco com texto escuro */
   body.imprimindo-fluxo .fluxo-tela { position: static; background: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   body.imprimindo-fluxo .fluxo-topbar-acoes, body.imprimindo-fluxo .btn-fluxo-voltar { display: none !important; }

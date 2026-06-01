@@ -1,12 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import { useAuth } from '../auth/useAuth';
-
-function iniciais(nome: string): string {
-  const partes = nome.trim().split(/\s+/);
-  const a = partes[0]?.[0] ?? '';
-  const b = partes.length > 1 ? partes[partes.length - 1][0] : '';
-  return (a + b).toUpperCase() || '?';
-}
+import { useAuth } from '../auth/CurrentUserContext';
+import { Avatar } from './Avatar';
 
 export function Sidebar() {
   const { usuario, logout } = useAuth();
@@ -23,10 +17,11 @@ export function Sidebar() {
       <nav className="app-nav">
         <NavLink to="/conformidade" className={({ isActive }) => 'app-nav-item' + (isActive ? ' active' : '')}>Conformidade</NavLink>
         <NavLink to="/painel" className={({ isActive }) => 'app-nav-item' + (isActive ? ' active' : '')}>Painel</NavLink>
+        <NavLink to="/log" className={({ isActive }) => 'app-nav-item' + (isActive ? ' active' : '')}>Log</NavLink>
       </nav>
       {usuario && (
         <div className="app-user">
-          <div className="app-user-avatar">{iniciais(usuario.nome)}</div>
+          <Avatar usuario={usuario} size={34} />
           <div className="app-user-info">
             <div className="app-user-nome" title={usuario.email}>{usuario.nome}</div>
             <button className="app-user-sair" onClick={logout}>Sair</button>
