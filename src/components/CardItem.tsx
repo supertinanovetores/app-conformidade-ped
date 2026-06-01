@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import type { Card, Status } from '../data/types';
 import { CATEGORIAS, STATUS_OPTS } from '../data/constants';
+import { fmtData } from '../lib/fmtData';
 import { Badge } from './Badge';
 
 interface Props {
@@ -46,6 +47,10 @@ export function CardItem({ card, onStatus, onNotas, onExcluir }: Props) {
       <button className="btn-fluxo" onClick={() => navigate(`/conformidade/${card.id}/fluxo`)}>
         Fluxograma{nEt ? ` (${nEt} etapa${nEt > 1 ? 's' : ''})` : ''}
       </button>
+      <div className="card-autoria">
+        Criado por {card.criadoPor?.nome ?? 'Sistema'}
+        {' • '}editado por {card.atualizadoPor?.nome ?? '—'} em {fmtData(card.atualizadoEm ?? card.criadoEm)}
+      </div>
     </div>
   );
 }

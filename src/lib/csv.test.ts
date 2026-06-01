@@ -6,6 +6,9 @@ const card: Card = {
   id: 'c1', titulo: 'pH "A"', categoria: 'materiaprima', fase: 'Desenvolvimento',
   status: 'conforme', notas: 'ok; ver', criadoEm: 0,
   etapas: [{ id: 'e1', titulo: 'Coleta', fase: 'Desenvolvimento', feedback: 'sem contaminação' }],
+  criadoPor: { nome: 'Ana Souza', email: 'ana@nanovetores.com.br' },
+  atualizadoPor: { nome: 'Bia Lima', email: 'bia@nanovetores.com.br' },
+  atualizadoEm: 0,
 };
 
 describe('cardsToCsv', () => {
@@ -24,5 +27,17 @@ describe('cardsToCsv', () => {
     const csv = cardsToCsv([card]);
     expect(csv).toContain('Coleta');
     expect(csv).toContain('sem contaminação');
+  });
+  it('inclui colunas e valores de autoria', () => {
+    const csv = cardsToCsv([card]);
+    expect(csv).toContain('Criado por');
+    expect(csv).toContain('Editado por');
+    expect(csv).toContain('Ana Souza');
+    expect(csv).toContain('Bia Lima');
+  });
+  it('usa "Sistema"/"—" quando a autoria está ausente', () => {
+    const semAutor: Card = { ...card, criadoPor: undefined, atualizadoPor: undefined };
+    const csv = cardsToCsv([semAutor]);
+    expect(csv).toContain('Sistema');
   });
 });

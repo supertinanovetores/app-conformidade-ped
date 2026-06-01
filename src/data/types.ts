@@ -11,6 +11,11 @@ export interface Etapa {
   feedback: string;
 }
 
+export interface Usuario {
+  nome: string;
+  email: string;
+}
+
 export interface Card {
   id: string;
   titulo: string;
@@ -20,6 +25,9 @@ export interface Card {
   notas: string;
   criadoEm: number;
   etapas: Etapa[];
+  criadoPor?: Usuario;
+  atualizadoPor?: Usuario;
+  atualizadoEm?: number;
 }
 
 export interface Filtros {

@@ -5,6 +5,7 @@ import { useToast } from '../components/Toast';
 import { CATEGORIAS, FASES, FASE_CLASSE } from '../data/constants';
 import type { Etapa, Fase } from '../data/types';
 import { uid } from '../lib/uid';
+import { fmtData } from '../lib/fmtData';
 
 export function Fluxograma() {
   const { id } = useParams();
@@ -57,7 +58,12 @@ export function Fluxograma() {
     <div className="fluxo-tela">
       <div className="fluxo-topbar">
         <button className="btn-fluxo-voltar" onClick={() => navigate('/conformidade')}>← Voltar</button>
-        <div className="fluxo-topbar-titulo">{card.titulo}</div>
+        <div className="fluxo-topbar-titulo">
+          {card.titulo}
+          <div className="fluxo-topbar-autoria">
+            Criado por {card.criadoPor?.nome ?? 'Sistema'} • editado por {card.atualizadoPor?.nome ?? '—'} em {fmtData(card.atualizadoEm ?? card.criadoEm)}
+          </div>
+        </div>
         <div className="fluxo-topbar-badges">
           <span className="badge-glass">{CATEGORIAS[card.categoria]}</span>
           <span className="badge-glass">{card.fase}</span>
