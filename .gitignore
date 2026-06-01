@@ -3,6 +3,7 @@ node_modules/
 
 # Build output
 dist/
+.vite/
 
 # Brainstorming companion artifacts
 .superpowers/
