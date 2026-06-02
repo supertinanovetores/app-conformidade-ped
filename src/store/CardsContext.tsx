@@ -1,8 +1,9 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import type { Card, Etapa, Usuario, LogEntry, LogAcao } from '../data/types';
 import { loadCards, saveCards, loadLog, saveLog } from './storage';
-import { SEED_CARDS } from '../data/seed';
+import { seedFor } from '../data/seed';
 import { useAuth } from '../auth/CurrentUserContext';
+import { useI18n } from '../i18n/LanguageContext';
 import { uid } from '../lib/uid';
 import { descreverEdicao } from '../lib/logDetalhe';
 import * as ops from './cardsOps';
@@ -23,7 +24,8 @@ const AUTOR_FALLBACK: Usuario = { nome: 'Desconhecido', email: '' };
 
 export function CardsProvider({ children }: { children: ReactNode }) {
   const { usuario } = useAuth();
-  const [cards, setCards] = useState<Card[]>(() => loadCards() ?? SEED_CARDS);
+  const { t, lang } = useI18n();
+  const [cards, setCards] = useState<Card[]>(() => loadCards() ?? seedFor(lang));
   const [log, setLog] = useState<LogEntry[]>(() => loadLog() ?? []);
 
   useEffect(() => { saveCards(cards); }, [cards]);
@@ -48,7 +50,7 @@ export function CardsProvider({ children }: { children: ReactNode }) {
     update: (id, patch) => {
       const alvo = cards.find((c) => c.id === id);
       setCards((cs) => ops.updateCard(cs, id, patch, autor()));
-      if (alvo) registrar('editou', alvo, descreverEdicao(patch));
+      if (alvo) registrar('editou', alvo, descreverEdicao(patch, t));
     },
     remove: (id) => {
       const alvo = cards.find((c) => c.id === id);
@@ -63,7 +65,7 @@ export function CardsProvider({ children }: { children: ReactNode }) {
     setEtapas: (id, etapas) => {
       const alvo = cards.find((c) => c.id === id);
       setCards((cs) => ops.updateEtapas(cs, id, etapas, autor()));
-      if (alvo) registrar('editou', alvo, `Editou o fluxo (${etapas.length} etapa${etapas.length !== 1 ? 's' : ''})`);
+      if (alvo) registrar('editou', alvo, `${t('logDet.fluxoEditado')} (${etapas.length} ${etapas.length !== 1 ? t('comum.etapas') : t('comum.etapa')})`);
     },
   };
 

@@ -1,6 +1,6 @@
-# Conformidade P&D — Nanovetores
+# Testes P&D — Nanovetores
 
-Aplicação web para **gestão de conformidade de testes de Pesquisa & Desenvolvimento**. Recria o sistema "Testes P&D — Conformidade" como SPA React + TypeScript, seguindo o **Nanovetores Design System**.
+Aplicação web para **gestão de testes de Pesquisa & Desenvolvimento**. Recria o sistema "Testes P&D" como SPA React + TypeScript, seguindo o **Nanovetores Design System**.
 
 É **frontend-only**: todos os dados são mocados e persistidos no `localStorage` do navegador — não há backend, banco de dados ou autenticação. A camada de dados é isolada em funções puras, pronta para ser trocada por uma API real no futuro sem alterar telas nem componentes.
 
@@ -9,7 +9,7 @@ Aplicação web para **gestão de conformidade de testes de Pesquisa & Desenvolv
 ## Funcionalidades
 
 - **Painel** — visão geral com indicadores (Conforme / Parcial / Reprovado / Total) e resumos por categoria e por fase.
-- **Conformidade** — lista de cards de teste com:
+- **Testes** — lista de cards de teste com:
   - contadores de status;
   - filtros combináveis por categoria, status e fase;
   - criação de novos cards (com etapas) via modal;
@@ -70,10 +70,10 @@ app-conformidade-ped/
 │   │   ├── Modal.tsx         # overlay genérico
 │   │   ├── Toast.tsx         # feedback efêmero (context)
 │   │   ├── ConfirmDialog.tsx # confirmação de exclusão
-│   │   └── CardItem.tsx      # card de conformidade na grid
+│   │   └── CardItem.tsx      # card de teste na grid
 │   └── screens/
 │       ├── Painel.tsx        # tela de indicadores
-│       ├── Conformidade.tsx  # lista + filtros + grid + modal
+│       ├── Testes.tsx        # lista + filtros + grid + modal
 │       └── Fluxograma.tsx    # fluxo tela cheia (view + edição + print)
 └── docs/superpowers/         # spec, plano e progresso da implementação
 ```

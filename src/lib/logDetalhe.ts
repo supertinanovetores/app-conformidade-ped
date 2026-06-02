@@ -1,13 +1,16 @@
 import type { Card, Status } from '../data/types';
-import { STATUS_LABEL } from '../data/constants';
+import type { DictKey } from '../i18n/types';
+import { statusKey } from '../i18n/labels';
+
+type T = (key: DictKey) => string;
 
 /** Descreve, em texto curto, o que uma edição de card alterou (para o log). */
-export function descreverEdicao(patch: Partial<Card>): string {
+export function descreverEdicao(patch: Partial<Card>, t: T): string {
   if ('status' in patch) {
     const s = patch.status as Status;
-    return s ? `Alterou o status para "${STATUS_LABEL[s]}"` : 'Removeu o status';
+    return s ? `${t('logDet.statusPara')} "${t(statusKey(s))}"` : t('logDet.statusRemovido');
   }
-  if ('notas' in patch) return 'Editou as notas';
-  if ('titulo' in patch || 'categoria' in patch || 'fase' in patch) return 'Editou os dados do card';
-  return 'Editou o card';
+  if ('notas' in patch) return t('logDet.notasEditadas');
+  if ('titulo' in patch || 'categoria' in patch || 'fase' in patch) return t('logDet.dadosEditados');
+  return t('logDet.cardEditado');
 }

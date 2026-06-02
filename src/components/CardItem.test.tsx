@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import type { Card } from '../data/types';
 
@@ -7,6 +7,7 @@ vi.mock('../auth/CurrentUserContext', () => ({
 }));
 
 import { CardItem } from './CardItem';
+import { LanguageProvider, LANG_KEY } from '../i18n/LanguageContext';
 
 const card: Card = { id: 'c1', titulo: 'Meu teste', categoria: 'zeta', fase: 'Validação', status: 'conforme', notas: '', criadoEm: 0, etapas: [{ id: 'e', titulo: 't', fase: '', feedback: '' }] };
 
@@ -14,20 +15,23 @@ const noop = () => {};
 
 function renderCard(extra: Partial<Parameters<typeof CardItem>[0]> = {}) {
   return render(
-    <CardItem
-      card={card}
-      onStatus={noop}
-      onNotas={noop}
-      onAbrir={noop}
-      onEditar={noop}
-      onDuplicar={noop}
-      onExcluir={noop}
-      {...extra}
-    />,
+    <LanguageProvider>
+      <CardItem
+        card={card}
+        onStatus={noop}
+        onNotas={noop}
+        onAbrir={noop}
+        onEditar={noop}
+        onDuplicar={noop}
+        onExcluir={noop}
+        {...extra}
+      />
+    </LanguageProvider>,
   );
 }
 
 describe('CardItem', () => {
+  beforeEach(() => { localStorage.setItem(LANG_KEY, 'pt'); });
   it('mostra título e categoria', () => {
     renderCard();
     expect(screen.getByText('Meu teste')).toBeInTheDocument();

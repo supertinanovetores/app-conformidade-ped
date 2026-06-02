@@ -1,10 +1,12 @@
 import type { Card, Usuario } from '../data/types';
 import { fmtData } from '../lib/fmtData';
 import { useAuth } from '../auth/CurrentUserContext';
+import { useI18n } from '../i18n/LanguageContext';
 import { Avatar } from './Avatar';
 
 export function Autoria({ card }: { card: Card }) {
   const { usuario: atual } = useAuth();
+  const { t } = useI18n();
 
   // Se o autor for o usuário logado, usa a foto da sessão atual — assim a foto
   // aparece mesmo em cards carimbados antes de a foto ter sido carregada.
@@ -21,12 +23,12 @@ export function Autoria({ card }: { card: Card }) {
   return (
     <div className="card-autoria">
       <span className="autoria-pessoa">
-        <Avatar usuario={criador} fallbackNome="Sistema" size={18} />
-        criado por {criador?.nome ?? 'Sistema'}
+        <Avatar usuario={criador} fallbackNome={t('autoria.sistema')} size={18} />
+        {t('autoria.criadoPor')} {criador?.nome ?? t('autoria.sistema')}
       </span>
       <span className="autoria-pessoa">
         {editor && <Avatar usuario={editor} size={18} />}
-        editado por {editor?.nome ?? '—'} em {fmtData(card.atualizadoEm ?? card.criadoEm)}
+        {t('autoria.editadoPor')} {editor?.nome ?? '—'} {t('autoria.em')} {fmtData(card.atualizadoEm ?? card.criadoEm)}
       </span>
     </div>
   );
