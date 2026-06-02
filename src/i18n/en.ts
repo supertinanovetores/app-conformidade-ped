@@ -4,7 +4,7 @@ import type { Dict } from './types';
 // erro se faltar ou sobrar qualquer chave em relação ao `pt`.
 export const en: Dict = {
   // App / brand
-  'app.nome': 'R&D Tests',
+  'app.nome': 'P&D Tests',
 
   // Navigation
   'nav.testes': 'Tests',
@@ -64,7 +64,7 @@ export const en: Dict = {
 
   // Dashboard screen
   'painel.titulo': 'Dashboard',
-  'painel.subtitulo': 'Overview of R&D tests',
+  'painel.subtitulo': 'Overview of P&D tests',
   'painel.total': 'Total',
   'painel.semStatus': 'No status',
   'painel.distStatus': 'Distribution by status',
@@ -75,7 +75,7 @@ export const en: Dict = {
 
   // Tests screen
   'testes.titulo': 'Tests',
-  'testes.subtitulo': 'R&D tests and their flows',
+  'testes.subtitulo': 'P&D tests and their flows',
   'testes.novoCard': '+ New card',
   'testes.buscar': 'Search by title or notes...',
   'testes.todasCategorias': 'All categories',
