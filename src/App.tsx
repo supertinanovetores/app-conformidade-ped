@@ -4,6 +4,7 @@ import { AuthProvider } from './auth/AuthProvider';
 import { RequireAuth } from './auth/RequireAuth';
 import { CardsProvider } from './store/CardsContext';
 import { ToastProvider } from './components/Toast';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { Sidebar } from './components/Sidebar';
 import { useI18n } from './i18n/LanguageContext';
 import { Painel } from './screens/Painel';
@@ -33,13 +34,15 @@ function AppShell() {
               <span className="app-topbar-title">{t('app.nome')}</span>
             </header>
             <main className="app-content">
-              <Routes>
-                <Route path="/" element={<Navigate to="/testes" replace />} />
-                <Route path="/painel" element={<Painel />} />
-                <Route path="/testes" element={<Testes />} />
-                <Route path="/log" element={<Log />} />
-                <Route path="*" element={<Navigate to="/testes" replace />} />
-              </Routes>
+              <ErrorBoundary>
+                <Routes>
+                  <Route path="/" element={<Navigate to="/testes" replace />} />
+                  <Route path="/painel" element={<Painel />} />
+                  <Route path="/testes" element={<Testes />} />
+                  <Route path="/log" element={<Log />} />
+                  <Route path="*" element={<Navigate to="/testes" replace />} />
+                </Routes>
+              </ErrorBoundary>
             </main>
           </div>
         </div>

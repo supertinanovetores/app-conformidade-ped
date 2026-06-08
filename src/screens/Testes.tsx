@@ -172,9 +172,8 @@ interface CardModalDados {
 }
 
 // ── Modal de criar/editar card ──────────────────────────────────────
-function CardModal({ card, onClose, onSubmit }: { card?: Card; onClose: () => void; onSubmit: (d: CardModalDados) => void }) {
+export function CardModal({ card, onClose, onSubmit }: { card?: Card; onClose: () => void; onSubmit: (d: CardModalDados) => void }) {
   const { t } = useI18n();
-  const toast = useToast();
   const editando = !!card;
   const [titulo, setTitulo] = useState(card?.titulo ?? '');
   const [categoria, setCategoria] = useState<Categoria | ''>(card?.categoria ?? '');
@@ -183,6 +182,9 @@ function CardModal({ card, onClose, onSubmit }: { card?: Card; onClose: () => vo
   const [responsavel, setResponsavel] = useState(card?.responsavel ?? '');
   const [etapas, setEtapas] = useState<string[]>([]);
   const [novaEtapa, setNovaEtapa] = useState('');
+  const [erros, setErros] = useState<{ titulo?: boolean; categoria?: boolean; fase?: boolean }>({});
+
+  const limparErro = (campo: keyof typeof erros) => setErros((e) => ({ ...e, [campo]: false }));
 
   function addEtapa() {
     const v = novaEtapa.trim();
@@ -192,7 +194,10 @@ function CardModal({ card, onClose, onSubmit }: { card?: Card; onClose: () => vo
   }
 
   function salvar() {
-    if (!titulo.trim() || !categoria || !fase) { toast(t('cardModal.preencha'), true); return; }
+    if (!titulo.trim() || !categoria || !fase) {
+      setErros({ titulo: !titulo.trim(), categoria: !categoria, fase: !fase });
+      return;
+    }
     onSubmit({
       titulo: titulo.trim(),
       categoria,
@@ -205,23 +210,26 @@ function CardModal({ card, onClose, onSubmit }: { card?: Card; onClose: () => vo
 
   return (
     <Modal titulo={editando ? t('cardModal.editarTitulo') : t('cardModal.novoTitulo')} onClose={onClose} className="modal-medio">
-      <div className="campo">
+      <div className={`campo${erros.titulo ? ' campo-erro' : ''}`}>
         <label>{t('cardModal.tituloTeste')}</label>
-        <input value={titulo} onChange={(e) => setTitulo(e.target.value)} placeholder={t('cardModal.tituloPlaceholder')} autoFocus />
+        <input value={titulo} onChange={(e) => { setTitulo(e.target.value); limparErro('titulo'); }} placeholder={t('cardModal.tituloPlaceholder')} autoFocus />
+        {erros.titulo && <span className="campo-erro-msg">{t('cardModal.campoObrigatorio')}</span>}
       </div>
-      <div className="campo">
+      <div className={`campo${erros.categoria ? ' campo-erro' : ''}`}>
         <label>{t('cardModal.categoria')}</label>
-        <select value={categoria} onChange={(e) => setCategoria(e.target.value as Categoria | '')}>
+        <select value={categoria} onChange={(e) => { setCategoria(e.target.value as Categoria | ''); limparErro('categoria'); }}>
           <option value="">{t('comum.selecione')}</option>
           {CATEGORIAS.map((v) => <option key={v} value={v}>{t(categoriaKey(v))}</option>)}
         </select>
+        {erros.categoria && <span className="campo-erro-msg">{t('cardModal.campoObrigatorio')}</span>}
       </div>
-      <div className="campo">
+      <div className={`campo${erros.fase ? ' campo-erro' : ''}`}>
         <label>{t('cardModal.fase')}</label>
-        <select value={fase} onChange={(e) => setFase(e.target.value as Fase | '')}>
+        <select value={fase} onChange={(e) => { setFase(e.target.value as Fase | ''); limparErro('fase'); }}>
           <option value="">{t('comum.selecione')}</option>
           {FASES.map((f) => <option key={f} value={f}>{t(faseKey(f))}</option>)}
         </select>
+        {erros.fase && <span className="campo-erro-msg">{t('cardModal.campoObrigatorio')}</span>}
       </div>
       <div className="campo">
         <label>{t('campo.solicitante')}</label>

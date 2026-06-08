@@ -104,6 +104,7 @@ export const en: Dict = {
   'cardModal.salvarAlteracoes': 'Save changes',
   'cardModal.criarCard': 'Create card',
   'cardModal.preencha': 'Fill in title, category and phase.',
+  'cardModal.campoObrigatorio': 'Required field',
 
   // CardItem
   'cardItem.abrirDetalhes': 'Open details and flow',
@@ -180,4 +181,9 @@ export const en: Dict = {
   'login.naoConfigPre': 'Login not configured. Set ',
   'login.naoConfigMid': ' and ',
   'login.naoConfigFile': ' in the ',
+
+  // Erro (boundary)
+  'erro.titulo': 'Something went wrong',
+  'erro.mensagem': 'An unexpected error occurred on this screen. Try reloading the page.',
+  'erro.recarregar': 'Reload',
 };

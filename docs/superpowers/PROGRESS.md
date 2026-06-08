@@ -1,11 +1,11 @@
 # Progresso da implementação — App Conformidade P&D
 
-Última atualização: 2026-05-29
+Última atualização: 2026-06-08
 
 - **Branch:** `feat/frontend-mock`
 - **Spec:** `docs/superpowers/specs/2026-05-29-app-conformidade-ped-design.md`
 - **Plano:** `docs/superpowers/plans/2026-05-29-app-conformidade-ped.md`
-- Execução **inline** (não via subagentes) por causa de instabilidade de socket; portões de verificação (`tsc` + testes) rodados entre unidades. Revisão de código independente prevista para o fim (U9).
+- Execução **inline** (não via subagentes). Portões de verificação (`tsc` + testes) rodados entre unidades.
 
 ## ⚠️ Gotcha do ambiente (importante)
 
@@ -18,11 +18,9 @@ O caminho do projeto contém `&`, o que **quebra os shims `.cmd`** do npm/npx no
 
 (`npm install` funciona normal.)
 
-## Ajustes de scaffold já aplicados (diferenças vs. plano)
+## Estado atual
 
-- Adicionado `src/vite-env.d.ts` (`/// <reference types="vite/client" />`) — sem ele o `tsc` falha nos imports de CSS.
-- Removidas as project references do TS: deletado `tsconfig.node.json`, removido `"references"` de `tsconfig.json`, e `package.json` build virou `tsc --noEmit && vite build` (evita TS6310).
-- Teste `derive.test.ts`: expectativa de `contarPor(...).materiaprima` corrigida para `4` (o `mk` usa categoria default `materiaprima`). Plano atualizado também.
+**Frontend mock completo e verde.** `tsc --noEmit` limpo, build OK e **64 testes passando** (15 arquivos). Todas as telas, componentes e a camada de lógica estão implementados; os dados vivem no `localStorage` (sem backend ainda).
 
 ## Status por unidade
 
@@ -30,22 +28,30 @@ O caminho do projeto contém `&`, o que **quebra os shims `.cmd`** do npm/npx no
 |---|---|---|
 | U1: Scaffold + tokens + CSS | Tasks 1-3 | ✅ feito |
 | U2: Tipos e constantes | Task 4 | ✅ feito |
-| U3: Camada de lógica (TDD) | Tasks 5-9 | ✅ feito (18 testes) |
+| U3: Camada de lógica (TDD) | Tasks 5-9 | ✅ feito |
 | U4: Seed + CardsContext | Tasks 10-11 | ✅ feito |
-| U5: Componentes base | Tasks 12-13 | ✅ feito (Modal test) |
-| U6: Shell + Sidebar + Painel | Tasks 14-15 | ⬜ **PRÓXIMA** |
-| U7: CardItem + Conformidade | Tasks 16-17 | ⬜ pendente |
-| U8: Fluxograma | Task 18 | ⬜ pendente |
-| U9: Verificação final + review | Task 19 | ⬜ pendente |
+| U5: Componentes base | Tasks 12-13 | ✅ feito |
+| U6: Shell + Sidebar + Painel | Tasks 14-15 | ✅ feito |
+| U7: CardItem + lista/filtros | Tasks 16-17 | ✅ feito |
+| U8: Fluxo/etapas (modal detalhe) | Task 18 | ✅ feito |
+| U9: Verificação + review | Task 19 | ✅ feito |
 
-**Estado atual:** `tsc --noEmit` limpo e **20 testes passando** (6 arquivos). `src/App.tsx` ainda é o placeholder da Task 1.
+## Polimento pós-MVP (antes do backend)
 
-## Como retomar (próximo passo = U6)
+Itens trabalhados em 2026-06-08, todos via TDD:
 
-1. Implementar **U6** (plano Tasks 14-15): criar `src/components/Sidebar.tsx`, **substituir** `src/App.tsx` (rotas + shell), criar `src/screens/Painel.tsx`.
-   - ⚠️ Ao substituir `App.tsx`, ele passa a importar `Conformidade` e `Fluxograma` (U7/U8) que ainda não existem → o `tsc` só fica verde após U8. Faça U6→U7→U8 antes do passe final de `tsc`. (Alternativa: comentar as rotas de Conformidade/Fluxograma temporariamente para validar U6 isolada.)
-2. Implementar **U7** (Tasks 16-17): `src/components/CardItem.tsx` (+ teste) e `src/screens/Conformidade.tsx`.
-3. Implementar **U8** (Task 18): `src/screens/Fluxograma.tsx`.
-4. **U9** (Task 19): `node ./node_modules/typescript/bin/tsc --noEmit`, `node ./node_modules/vitest/vitest.mjs run`, `node ./node_modules/vite/bin/vite.js build`, smoke manual (`node ./node_modules/vite/bin/vite.js`), e revisão de código final.
+- ✅ **#4 Acessibilidade do `Modal`** — focus trap (Tab/Shift+Tab circulam dentro do modal), restauração de foco ao elemento que abriu, e `aria-labelledby` ligando o diálogo ao título. (`components/Modal.tsx`, `Modal.test.tsx`)
+- ✅ **#5 Validação inline no `CardModal`** — campos obrigatórios (título/categoria/fase) marcados em vermelho com mensagem "Campo obrigatório" e limpeza do erro ao corrigir, no lugar do toast genérico. (`screens/Testes.tsx`, `screens/CardModal.test.tsx`, chave i18n `cardModal.campoObrigatorio`)
+- ✅ **#8 Error boundary** — `ErrorBoundary` envolve as rotas em `App.tsx`; um erro de render mostra fallback traduzido com botão "Recarregar" sem derrubar o shell. (`components/ErrorBoundary.tsx`, `ErrorBoundary.test.tsx`, chaves i18n `erro.*`)
+- ✅ **#6** — este arquivo atualizado.
 
-Todo o código verbatim de cada unidade está no arquivo do plano. As tasks de tracking (#1-#9) refletem este mesmo mapeamento.
+### Itens propostos e ainda não feitos (candidatos antes/junto do backend)
+
+- ⬜ **#1 Camada de dados async-ready** — tornar a interface do `CardsContext` assíncrona (Promise + estados de loading/erro) para a troca por API ser trivial.
+- ⬜ **#2 Contrato da API** — desenhar endpoints/DTOs (`GET/POST/PATCH/DELETE /cards`, `/log`).
+- ⬜ **#3 Estados de loading / erro / vazio** nas telas.
+- ⬜ **#7 Testes de integração das screens** (`Painel`, `Log`; `Testes` já tem teste do `CardModal`).
+
+## Próximo passo
+
+Seguir para o **backend** (bloco #1 + #2 + #3 acima são a costura recomendada antes/junto da API).

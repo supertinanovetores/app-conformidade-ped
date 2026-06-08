@@ -103,6 +103,7 @@ export const pt = {
   'cardModal.salvarAlteracoes': 'Salvar alterações',
   'cardModal.criarCard': 'Criar card',
   'cardModal.preencha': 'Preencha título, categoria e fase.',
+  'cardModal.campoObrigatorio': 'Campo obrigatório',
 
   // CardItem
   'cardItem.abrirDetalhes': 'Abrir detalhes e fluxo',
@@ -179,4 +180,9 @@ export const pt = {
   'login.naoConfigPre': 'Login não configurado. Defina ',
   'login.naoConfigMid': ' e ',
   'login.naoConfigFile': ' no arquivo ',
+
+  // Erro (boundary)
+  'erro.titulo': 'Algo deu errado',
+  'erro.mensagem': 'Ocorreu um erro inesperado nesta tela. Tente recarregar a página.',
+  'erro.recarregar': 'Recarregar',
 } satisfies Record<string, string>;
